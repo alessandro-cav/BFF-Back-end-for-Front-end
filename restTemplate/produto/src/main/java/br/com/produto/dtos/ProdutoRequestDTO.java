@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-public class ProdutoRequestDTO implements Serializable{
+public class ProdutoRequestDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -15,8 +15,7 @@ public class ProdutoRequestDTO implements Serializable{
 
 	private String descricao;
 
-	@JsonFormat(pattern = "dd/MM/yyyy")
-	private LocalDate validade;
+	private String validade;
 
 	public Long getId() {
 		return id;
@@ -42,11 +41,11 @@ public class ProdutoRequestDTO implements Serializable{
 		this.descricao = descricao;
 	}
 
-	public LocalDate getValidade() {
+	public String getValidade() {
 		return validade;
 	}
 
-	public void setValidade(LocalDate validade) {
+	public void setValidade(String validade) {
 		this.validade = validade;
 	}
 }
