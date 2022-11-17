@@ -3,6 +3,8 @@ package br.com.produto.service.dtos;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class ProdutoRequestDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -13,6 +15,7 @@ public class ProdutoRequestDTO implements Serializable{
 
 	private String descricao;
 
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate validade;
 
 	public Long getId() {

@@ -18,7 +18,7 @@ import br.com.produto.service.dtos.ProdutoResponseDTO;
 import br.com.produto.service.services.ProdutoService;
 
 @RestController
-@RequestMapping("/produtos")
+@RequestMapping("/produtosServices")
 public class ProdutoController {
 
 	private final ProdutoService service;
