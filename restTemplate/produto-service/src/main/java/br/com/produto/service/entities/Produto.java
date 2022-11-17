@@ -25,8 +25,7 @@ public class Produto implements Serializable {
 
 	private String descricao;
 
-	@JsonFormat(pattern = "dd/MM/yyyy")
-	private LocalDate validade;
+	private String validade;
 
 	public Long getId() {
 		return id;
@@ -52,11 +51,11 @@ public class Produto implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public LocalDate getValidade() {
+	public String getValidade() {
 		return validade;
 	}
 
-	public void setValidade(LocalDate validade) {
+	public void setValidade(String validade) {
 		this.validade = validade;
 	}
 }

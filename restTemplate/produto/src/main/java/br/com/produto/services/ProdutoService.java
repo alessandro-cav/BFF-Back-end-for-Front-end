@@ -13,16 +13,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import br.com.produto.dtos.ProdutoRequestDTO;
 import br.com.produto.dtos.ProdutoResponseDTO;
 import br.com.produto.dtos.ProdutoResponseDTO2;
-import br.com.produto.entity.Produto;
 
 @Service
 public class ProdutoService {
 
-	private static final String GET_PRODUTOS_SERVICE_ENDPOINT_URL = "http://localhost:8080//produto-service/produtosServices";
+	private static final String GET_PRODUTOS_SERVICE_ENDPOINT_URL = "http://localhost:8080/produto-service/produtosServices";
+	private static final String CREATE_PRODUTO_SERVICE_ENDPOINT_URL = "http://localhost:8080/produto-service/produtosServices";
 	private static final String GET_EMPLOYEE_ENDPOINT_URL = "http://localhost:8080/api/v1/employees/{id}";
-	private static final String CREATE_EMPLOYEE_ENDPOINT_URL = "http://localhost:8080/api/v1/employees";
 	private static final String UPDATE_EMPLOYEE_ENDPOINT_URL = "http://localhost:8080/api/v1/employees/{id}";
 	private static final String DELETE_EMPLOYEE_ENDPOINT_URL = "http://localhost:8080/api/v1/employees/{id}";
 
@@ -30,7 +30,8 @@ public class ProdutoService {
 
 	// TRAZER A LISTA DE PRODUTOS
 	public ResponseEntity<List<ProdutoResponseDTO>> findAll() {
-		// PODE FAZER A TRANSFORMAÇÃO DIRETO O OBJETO EM DTO QUANDO OS ATRIBUTOS SAO IGUAIS DO CONSUMIDOR COM O SERVIÇO PARA MOSTRAR AO USUARIO
+		// PODE FAZER A TRANSFORMAÇÃO DIRETO O OBJETO EM DTO QUANDO OS ATRIBUTOS SAO
+		// IGUAIS DO CONSUMIDOR COM O SERVIÇO PARA MOSTRAR AO USUARIO
 		// EXEMPLO : PRODUTO_SERVICE(SERVICO) COM PTODUTO(CONSUMIDOR)
 
 		HttpHeaders headers = new HttpHeaders();
@@ -46,7 +47,8 @@ public class ProdutoService {
 	}
 
 	public List<ProdutoResponseDTO2> findAll02() {
-		// PODEMOS PEGAR O OBJETO E EDITAR PARA MOSNTRAR SOMENTE OS ATRIBUTOS QUE DESEJAMOS NO DTO PARA USUARIO
+		// PODEMOS PEGAR O OBJETO E EDITAR PARA MOSNTRAR SOMENTE OS ATRIBUTOS QUE
+		// DESEJAMOS NO DTO PARA USUARIO
 		ResponseEntity<ProdutoResponseDTO[]> response = restTemplate.getForEntity(GET_PRODUTOS_SERVICE_ENDPOINT_URL,
 				ProdutoResponseDTO[].class);
 
@@ -62,7 +64,9 @@ public class ProdutoService {
 			listaProdutoResponseDTO.add(pResponseDTO);
 		}
 		return listaProdutoResponseDTO;
-
 	}
 
+	public ResponseEntity<ProdutoResponseDTO> criarProduto(ProdutoRequestDTO produtoRequestDTO){
+		return restTemplate.postForEntity(CREATE_PRODUTO_SERVICE_ENDPOINT_URL, produtoRequestDTO, ProdutoResponseDTO.class);
+	}
 }

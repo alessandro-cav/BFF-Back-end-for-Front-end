@@ -1,7 +1,6 @@
 package br.com.produto.service.dtos;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 public class ProdutoResponseDTO implements Serializable {
 
@@ -13,7 +12,7 @@ public class ProdutoResponseDTO implements Serializable {
 
 	private String descricao;
 
-	private LocalDate validade;
+	private String validade;
 
 	public Long getId() {
 		return id;
@@ -39,11 +38,11 @@ public class ProdutoResponseDTO implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public LocalDate getValidade() {
+	public String getValidade() {
 		return validade;
 	}
 
-	public void setValidade(LocalDate validade) {
+	public void setValidade(String validade) {
 		this.validade = validade;
 	}
 
